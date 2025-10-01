@@ -735,28 +735,12 @@ MATCH (p:Product {sku: "SKU-2101"})-[:SIMILAR_TO]->(s:Product) RETURN s
 4. Ensure all tests pass
 5. Request review from maintainers
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 🙏 Acknowledgments
 
 - **Neo4j** - Powerful graph database platform for relationship modeling
 - **FastAPI** - Modern, fast web framework for building APIs
 - **Ollama** - Local LLM capabilities for AI-powered features
 - **Community** - Inspiration, feedback, and contributions from developers worldwide
-
-## 📞 Support
-
-For support, questions, or contributions:
-- **Issues** - Open an issue on GitHub
-- **Discussions** - Join community discussions
-- **Documentation** - Check the API documentation at `/docs`
-- **Email** - Contact the development team
-
----
-
-**Made with ❤️ by the Cartify Team**
 
 *Experience the future of e-commerce with graph-powered recommendations and AI-driven discovery!*
 
