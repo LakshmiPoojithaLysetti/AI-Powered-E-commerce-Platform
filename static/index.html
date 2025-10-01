@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Cartify</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">🧭 Cartify</div>
+    <div class="search-container">
+      <form id="searchForm" class="searchbar">
+        <input id="q" type="text" placeholder="Search by title, brand, tag… (e.g., hiking, tent, titanium)" aria-label="Search products" />
+        <button type="submit" aria-label="Search">Search</button>
+      </form>
+    </div>
+    <div class="user-menu">
+      <a href="./wishlist.html" class="wishlist-link" title="View Wishlist">💖 Wishlist <span id="wishlistCount" class="wishlist-count">0</span></a>
+      <span id="userInfo" class="user-info"></span>
+      <button id="logoutBtn" class="logout-btn" title="Logout">Logout</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <h3>Filters</h3>
+      <div class="filter">
+        <label for="categoryFilter">Category</label>
+        <select id="categoryFilter" aria-label="Filter by category">
+          <option value="">All</option>
+          <option>Hiking</option>
+          <option>Camping</option>
+          <option>Electronics</option>
+          <option>Lighting</option>
+          <option>Power</option>
+          <option>Apparel</option>
+          <option>Climbing</option>
+          <option>Navigation</option>
+          <option>Hydration</option>
+          <option>Cooking</option>
+          <option>Footwear</option>
+        </select>
+      </div>
+
+      <div class="filter">
+        <label for="brandFilter">Brand</label>
+        <select id="brandFilter" aria-label="Filter by brand">
+          <option value="">All Brands</option>
+          <!-- Brands will be populated dynamically -->
+        </select>
+      </div>
+
+      <div class="filter">
+        <label for="priceRange">Price Range</label>
+        <div class="price-filter">
+          <input type="range" id="priceMin" min="0" max="200" value="0" aria-label="Minimum price">
+          <input type="range" id="priceMax" min="0" max="200" value="200" aria-label="Maximum price">
+          <div class="price-display">
+            $<span id="priceMinValue">0</span> - $<span id="priceMaxValue">200</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter">
+        <label for="ratingFilter">Minimum Rating</label>
+        <select id="ratingFilter" aria-label="Filter by minimum rating">
+          <option value="0">Any Rating</option>
+          <option value="4.5">4.5+ Stars ⭐⭐⭐⭐⭐</option>
+          <option value="4.0">4.0+ Stars ⭐⭐⭐⭐</option>
+          <option value="3.5">3.5+ Stars ⭐⭐⭐</option>
+          <option value="3.0">3.0+ Stars ⭐⭐</option>
+        </select>
+      </div>
+
+      <div class="filter">
+        <label for="sortBy">Sort by</label>
+        <select id="sortBy" aria-label="Sort results">
+          <option value="relevance">Relevance</option>
+          <option value="price_asc">Price ↑</option>
+          <option value="price_desc">Price ↓</option>
+          <option value="rating_desc">Rating ↓</option>
+          <option value="reviews_desc">Reviews ↓</option>
+        </select>
+      </div>
+
+      <div class="hint">
+        <p><strong>Tip:</strong> click <em>Similar</em> on a product to see graph-based neighbors (SIMILAR_TO + ALSO_BOUGHT).</p>
+      </div>
+
+      <h3 class="mt">Context (Candidates)</h3>
+      <ul id="contextList" class="context-list"></ul>
+    </aside>
+
+    <section class="content">
+      <!-- Search Results Section -->
+      <div id="summary" class="summary" style="display: none;"></div>
+      <div id="results" class="grid"></div>
+    </section>
+  </main>
+
+  <template id="cardTpl">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title"></div>
+        <div class="card-actions-header">
+          <button class="btn-wishlist" title="Add to wishlist">❤️</button>
+          <div class="pill sku"></div>
+        </div>
+      </div>
+      <div class="meta"></div>
+      <p class="desc"></p>
+      <div class="badges"></div>
+      <div class="actions">
+        <button class="btn-similar">Similar</button>
+        <button class="btn-details">Details</button>
+        <button class="btn-quick-view">Quick View</button>
+      </div>
+    </div>
+  </template>
+
+  <div id="modal" class="modal" style="display: none;">
+    <div class="dialog">
+      <button id="modalClose" class="close">✕</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
