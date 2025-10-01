@@ -98,27 +98,27 @@ A modern, intelligent e-commerce application that combines graph databases, AI r
 
 ```mermaid
 graph TB
-    subgraph "Frontend Layer"
+    subgraph Frontend["Frontend Layer"]
         A[HTML5/CSS3/JS] --> B[Static Files Server]
         B --> C[Glassmorphism UI]
         C --> D[Interactive Components]
     end
     
-    subgraph "API Layer"
+    subgraph API["API Layer"]
         E[FastAPI Application] --> F[CORS Middleware]
         F --> G[Authentication Middleware]
         G --> H[REST API Endpoints]
         H --> I[Request Validation]
     end
     
-    subgraph "Business Logic Layer"
+    subgraph Business["Business Logic Layer"]
         I --> J[Graph Operations]
         I --> K[RAG Recommendations]
         J --> L[Neo4j Driver]
         K --> M[Ollama Client]
     end
     
-    subgraph "Data Layer"
+    subgraph Data["Data Layer"]
         L --> N[Neo4j Graph Database]
         N --> O[Product Graph]
         N --> P[User Behavior Data]
